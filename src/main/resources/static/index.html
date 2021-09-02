@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+    <script type="text/css" src="https://cdn.staticfile.org/semantic-ui/2.4.1/semantic.min.css"></script>
+    <link type="text/css" href="https://cdn.staticfile.org/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="ui menu">
+        <div class="header item"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            图书信息管理
+        </font></font></div>
+        <a class="item" href="Lending.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            用户租借管理
+        </font></font></a>
+        <a class="item"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            关于我们
+        </font></font></a>
+        <a class="item" href="/logout"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            注销
+        </font></font></a>
+    </div>
+    <div>
+        <span>
+            <select name="option" class="ui dropdown" id="opt">
+                <option value="byname">图书名</option>
+                <option value="byauthor">作者</option>
+                <option value="all">查询所有</option>
+            </select>
+            <div class="ui action input">
+                <input id="selectbk" type="text" placeholder="搜索...">
+                <button id="selectbtn" class="ui icon button">
+                    <i class="search icon"></i>
+                </button>
+            </div>
+            <button id="addbtn" class="ui button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    添加图书
+                </font></font></button>
+            <button id="upbtn" class="ui button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    编辑图书
+                </font></font></button>
+            <button id="delbtn" class="ui button"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    删除图书
+                </font></font></button>
+        </span>
+        <table class="ui celled table">
+            <thead>
+            <tr id="bookinfo"><th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">编号</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">图书名</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">图书作者</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">库存数量</font></font></th>
+            </tr></thead>
+            <tbody id="t_body"></tbody>
+        </table>
+    </div>
+
+    <div id="addbk" class="ui small basic modal">
+        <div class="header title">添加图书信息</div>
+        <div class="content">
+            <div class="ui action input">
+                <input id="new_bookname" type="text" placeholder="图书名字"><br>
+                <input id="new_author" type="text" placeholder="图书作者"><br>
+                <input id="new_num" type="text" placeholder="图书数量"><br>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="ui negative button">取消</button>
+            <button id="sub" class="ui positive button">保存</button>
+        </div>
+    </div>
+
+    <div id="upbk" class="ui small basic modal">
+        <div class="header title">修改图书信息</div>
+        <div class="content">
+            <div class="ui action input">
+                <input id="up_bookname" type="text" placeholder="图书名字"><br>
+                <input id="up_author" type="text" placeholder="图书作者"><br>
+                <input id="up_num" type="text" placeholder="图书数量"><br>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="ui negative button">取消</button>
+            <button id="up" class="ui positive button">保存</button>
+        </div>
+    </div>
+
+    <div id="delbk" class="ui small basic modal">
+        <div class="header title">修改图书信息</div>
+        <div class="content">
+            <div class="ui action input">
+                <input id="del_bookname" type="text" placeholder="图书名字"><br>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="ui negative button">取消</button>
+            <button id="del" class="ui positive button">保存</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/semantic-ui/2.4.1/semantic.js"></script>
+    <script type="text/javascript" src="dev/common.js"></script>
+    <script type="text/javascript">
+        $("#addbtn").click(function (){
+            $("#addbk").modal("show");
+        });
+        $("#upbtn").click(function (){
+            $("#upbk").modal("show");
+        });
+        $("#delbtn").click(function (){
+            $("#delbk").modal("show");
+        });
+        $('#select').dropdown();
+    </script>
+</body>
+</html>

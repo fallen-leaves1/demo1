@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.mapper.BookMapper">
+    <select id="selectBookById" parameterType="java.lang.Integer" resultType="com.example.demo.repository.dao.Book">
+        select * from books where id = #{id}
+    </select>
+    <insert id="addBook" parameterType="com.example.demo.repository.dao.Book">
+        insert into books(bookname,author,num) values (#{book.bookname}, #{book.author}, #{book.num})
+    </insert>
+    <update id="updateBook" parameterType="com.example.demo.repository.dao.Book">
+        update books
+        set bookname=#{book.bookname}, author=#{book.author}, num=#{book.num}
+        where id=#{book.id}
+    </update>
+    <delete id="deleteBook" parameterType="java.lang.String">
+        delete from books where bookname = #{bookname}
+    </delete>
+    <select id="selectBooks" resultType="com.example.demo.repository.dao.Book">
+        select * from books
+    </select>
+    <select id="selectBookByname" parameterType="java.lang.String" resultType="com.example.demo.repository.dao.Book">
+        select * from books where bookname=#{bookname};
+    </select>
+    <select id="selectBookByAll" parameterType="map" resultType="com.example.demo.repository.dao.Book">
+        select * from books
+            <where>
+                <if test="bookname!=null">
+                    bookname=#{bookname}
+                </if>
+                <if test="author!=null">
+                    and author=#{author}
+                </if>
+            </where>
+    </select>
+</mapper>

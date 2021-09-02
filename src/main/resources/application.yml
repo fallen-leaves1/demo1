@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    username: root
+    password: hsy123456
+    url: jdbc:mysql://localhost:3306/tushuguan?serverTimezone=GMT
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  transaction:
+    rollback-on-commit-failure: true
+server:
+  port: 8081
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
